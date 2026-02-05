@@ -1,6 +1,7 @@
 # here only data feteching part 
 import yfinance as yf
 import pandas as pd
+from pathlib import Path
 
 def fetch_index_data(ticker, start="2010-01-01"):
     data = yf.download(ticker, start=start, progress=False)
@@ -19,5 +20,10 @@ if __name__ == "__main__":
     nifty = fetch_index_data("^NSEI")
     banknifty = fetch_index_data("^NSEBANK")
 
-    nifty.to_csv("data/raw/nifty.csv", index=False)
-    banknifty.to_csv("data/raw/banknifty.csv", index=False)
+    # Save into repo-root `data/raw/` so repo-root files are overwritten
+    repo_root = Path(__file__).resolve().parent.parent
+    out_dir = repo_root / "data" / "raw"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    nifty.to_csv(out_dir / "nifty.csv", index=False)
+    banknifty.to_csv(out_dir / "banknifty.csv", index=False)
