@@ -115,22 +115,24 @@ Interactive Dashboard
   - Consumes computed outputs (no business logic)
 
 
-## Architecture Diagram
+
+    ##  Architecture Diagram
 
 ```mermaid
 flowchart TD
 
-    A[Market Data<br/>CSV Files<br/>(NIFTY / BANKNIFTY)]
-    B[Fundamentals API<br/>(Dynamic Data)]
-    
+    A[Market Data - CSV Files (NIFTY, BANKNIFTY)]
+    B[Fundamentals API - Dynamic Data]
+
     A --> C[Feature Engineering]
     B --> D[Fundamental Processing]
 
     C --> E[Risk Engine]
     D --> E
 
-    E --> F[Risk Metrics<br/>(Volatility, Drawdown,<br/>VaR, CVaR, Anomaly Score)]
-    F --> G[Risk Score<br/>(0–100)]
+    E --> F[Risk Metrics: Volatility, Drawdown, VaR, CVaR, Anomaly]
+    F --> G[Final Risk Score (0-100)]
 
     G --> H[Visualization Layer]
-    H --> I[Streamlit Dashboard<br/>(Interactive)]
+    H --> I[Streamlit Interactive Dashboard]
+
