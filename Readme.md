@@ -120,9 +120,8 @@ Interactive Dashboard
 
 ```mermaid
 flowchart TD
-
-    A[Market Data - CSV Files (NIFTY, BANKNIFTY)]
-    B[Fundamentals API - Dynamic Data]
+    A[Market Data CSV Files]
+    B[Fundamentals API Data]
 
     A --> C[Feature Engineering]
     B --> D[Fundamental Processing]
@@ -130,9 +129,8 @@ flowchart TD
     C --> E[Risk Engine]
     D --> E
 
-    E --> F[Risk Metrics: Volatility, Drawdown, VaR, CVaR, Anomaly]
-    F --> G[Final Risk Score (0-100)]
+    E --> F[Risk Metrics]
+    F --> G[Final Risk Score]
 
     G --> H[Visualization Layer]
-    H --> I[Streamlit Interactive Dashboard]
-
+    H --> I[Streamlit Dashboard]
